@@ -27,5 +27,11 @@ export class PokemonService {
     return this.http.get<ResultApiPokemonInterface>(url + "&task=deletePokemon&userApi="+ token +"&id=" + id)
   }
 
+  // AJOUTER UN POKEMON
+  addPokemon(url:string, token:string, pokemon:PokemonInterface, header: {headers:HttpHeaders}):Observable<ResultApiPokemonInterface>{
+    const body = JSON.stringify(pokemon);
+    return this.http.post<ResultApiPokemonInterface>(url + "&task=createPokemon&userApi=" + token, body, header)
+  }
+
 
 }
